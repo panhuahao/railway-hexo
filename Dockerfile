@@ -41,9 +41,10 @@ RUN ln -sb /usr/nodejs/bin/npm /usr/local/bin/
 FROM node:11.1.0-alpine
 RUN apk add --update --no-cache git
 RUN npm config set unsafe-perm true \
-    && npm install hexo-cli -g && ln -sb /usr/nodejs/bin/hexo /usr/local/bin/
+    && npm install hexo-cli -g 
 RUN cd /usr/
 RUN mkdir forhexo
+RUN cd /forhexo/
 RUN hexo init blog
 
 WORKDIR /usr/forhexo/blog/
