@@ -6,9 +6,10 @@ ENV NGINX_INCLUED_CONFIG_DIR /etc/nginx/conf.d
 
 
 # Grab dependencies
-RUN apt-get update && apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup | bash - && apt-get update && apt-get install -y curl git nodejs
-RUN npm install -g hexo-cli
+FROM node:11.1.0-alpine
+RUN apk add --update --no-cache git
+RUN npm config set unsafe-perm true \
+    && npm install hexo-cli -g 
 
 # Create hexo base files
 RUN hexo init /usr/share/nginx/html
