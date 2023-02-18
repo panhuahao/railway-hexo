@@ -47,7 +47,7 @@ RUN mkdir forhexo
 RUN cd /forhexo/
 RUN hexo init blog
 
-WORKDIR /usr/forhexo/blog/
+RUN cd blog
 RUN hexo new "Hello Hexo"
 RUN hexo generate
 
