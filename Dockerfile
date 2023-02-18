@@ -37,19 +37,19 @@ RUN mv node-v16.15.0-linux-x64 nodejs
 # 建立软连接，变为全局
 RUN ln -sb /usr/nodejs/bin/node /usr/local/bin/
 RUN ln -sb /usr/nodejs/bin/npm /usr/local/bin/
-FROM node:11.1.0-alpine
 
+FROM node:11.1.0-alpine
 RUN apk add --update --no-cache git
 RUN npm config set unsafe-perm true \
     && npm install hexo-cli -g
 RUN cd /usr/
 RUN mkdir forhexo
 RUN hexo init blog
-RUN cd blog
-RUN hexo server
+
+WORKDIR /usr/forhexo/blog/
 RUN hexo new "Hello Hexo"
 RUN hexo generate
-WORKDIR /usr/forhexo/blog/
+
 
 
 RUN mkdir $NGINX_HTML_DIR/app
