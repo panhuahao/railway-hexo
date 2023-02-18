@@ -14,7 +14,7 @@ RUN npm config set unsafe-perm true \
 # Create hexo base files
 RUN hexo init /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
-RUN npm install
+
 RUN mv /usr/share/nginx/html/nginx-server.conf $NGINX_INCLUED_CONFIG_DIR/default.conf
 
 CMD hexo generate && nginx -g "daemon off;"
