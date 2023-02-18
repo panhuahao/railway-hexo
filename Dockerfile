@@ -6,4 +6,4 @@ RUN npm config set unsafe-perm true \
 
 WORKDIR /Hexo
 
-EXPOSE 4000
+EXPOSE 80
