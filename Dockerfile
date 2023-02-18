@@ -46,8 +46,8 @@ RUN cd /usr/
 RUN mkdir forhexo
 RUN cd /forhexo/
 RUN hexo init blog
-
 RUN cd blog
+RUN echo 'PATH="$PATH:./node_modules/.bin"' >> ~/.profile
 RUN hexo new "Hello Hexo"
 RUN hexo generate
 
