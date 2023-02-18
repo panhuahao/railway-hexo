@@ -1,7 +1,7 @@
 FROM nginx
 
+ENV NGINX_INCLUED_CONFIG_DIR /etc/nginx/conf.d
 
-ADD default.conf /etc/nginx/conf.d/default.conf
 
 
 
@@ -14,5 +14,6 @@ RUN npm install -g hexo-cli
 RUN hexo init /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
 RUN npm install
+RUN mv /usr/share/nginx/html/nginx-server.conf $NGINX_INCLUED_CONFIG_DIR/default.conf
 
 CMD hexo generate && nginx -g "daemon off;"
