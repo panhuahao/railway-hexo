@@ -38,10 +38,7 @@ RUN mv node-v16.15.0-linux-x64 nodejs
 RUN ln -sb /usr/nodejs/bin/node /usr/local/bin/
 RUN ln -sb /usr/nodejs/bin/npm /usr/local/bin/
 
-FROM node:11.1.0-alpine
-RUN apk add --update --no-cache git
-RUN npm config set unsafe-perm true \
-    && npm install hexo-cli -g 
+RUN npm install hexo-cli -g
 RUN cd /usr/
 RUN mkdir forhexo
 RUN cd /forhexo/
