@@ -38,6 +38,6 @@ RUN npm install hexo-cli -g && ln -sb /usr/nodejs/bin/hexo /usr/local/bin/
 RUN hexo init /usr/share/nginx/html/blog
 RUN hexo generate
 
-RUN mv /usr/share/nginx/html/blog/nginx-server.conf $NGINX_INCLUED_CONFIG_DIR/default.conf
+RUN mv /usr/share/nginx/html/nginx-server.conf $NGINX_INCLUED_CONFIG_DIR/default.conf
 
 
