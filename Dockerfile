@@ -36,8 +36,8 @@ RUN ln -sb /usr/nodejs/bin/npm /usr/local/bin/
 RUN npm install hexo-cli -g && ln -sb /usr/nodejs/bin/hexo /usr/local/bin/
 # Create hexo base files
 RUN hexo init /usr/share/nginx/html/blog
-
+RUN hexo generate
 
 RUN mv /usr/share/nginx/html/blog/nginx-server.conf $NGINX_INCLUED_CONFIG_DIR/default.conf
 
-CMD hexo generate && nginx -g "daemon off;"
+
