@@ -31,7 +31,6 @@ RUN mv node-v16.15.0-linux-x64 nodejs
 RUN ln -sb /usr/nodejs/bin/node /usr/local/bin/
 RUN ln -sb /usr/nodejs/bin/npm /usr/local/bin/
 
-
 RUN npm install hexo-cli -g && ln -sb /usr/nodejs/bin/hexo /usr/local/bin/
 # Create hexo base files
 RUN hexo init /hexo
