@@ -10,7 +10,8 @@ ENV NGINX_HTML_DIR /usr/share/nginx/html
 # 设置nginx配置文件包含路径环境变量
 ENV NGINX_INCLUED_CONFIG_DIR /etc/nginx/conf.d
 
-
+RUN apt update
+RUN apt install npm
 RUN npm install hexo-cli -g && ln -sb /usr/nodejs/bin/hexo /usr/local/bin/
 # Create hexo base files
 RUN hexo init /usr/share/hexo
