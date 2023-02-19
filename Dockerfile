@@ -4,6 +4,7 @@ FROM nginx
 ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 # 设置容器时区为上海，不然发布文章的时间是国际时间（UTC），也就是比我们晚8个小时
 ENV TZ=Asia/Shanghai
+ADD default.conf /etc/nginx/conf.d/default.conf
 # 设置容器http代理,如果你的宿主机有代理，可以使用宿主机的局域网ipv4，
 # 有用户名密码可以使用 协议://`用户名`:`密码`@`主机`:`端口`（宿主机的代理需要允许来自局域网LAN的连接）
 #ENV http_proxy "http://192.168.0.102:7890"
@@ -11,9 +12,9 @@ ENV TZ=Asia/Shanghai
 #ENV https_proxy "http://192.168.0.102:7890"
 #ENV HTTPS_PROXY "http://192.168.0.102:7890"
 # 设置nginx html目录环境变量
-ENV NGINX_HTML_DIR /usr/share/nginx/html
+#ENV NGINX_HTML_DIR /usr/share/nginx/html
 # 设置nginx配置文件包含路径环境变量
-ENV NGINX_INCLUED_CONFIG_DIR /etc/nginx/conf.d
+#ENV NGINX_INCLUED_CONFIG_DIR /etc/nginx/conf.d
 WORKDIR /usr/
 # 提醒大家最好不要用 && \ 或 & \ 来一个RUN执行特别多条命令，容易排错困难
 # 更新依赖
