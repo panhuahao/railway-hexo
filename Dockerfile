@@ -47,7 +47,7 @@ RUN npm install -g hexo && ln -sb /usr/nodejs/bin/hexo /usr/local/bin/
 RUN npm install
 # 生成静态页
 RUN hexo clean && hexo generate
-RUN cp public/* /usr/share/nginx/html
+RUN cp -r public/* /usr/share/nginx/html
 # 创建存放项目静态页面的文件夹
 # 删除无用软件，记得加 -y
 # 不用再次暴露端口，nginx镜像已经做了
