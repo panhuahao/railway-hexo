@@ -40,4 +40,3 @@ RUN hexo generate
 WORKDIR /usr/share/nginx/html
 COPY --from=0 /usr/share/hexo/blog/public .
 
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
