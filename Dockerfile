@@ -33,8 +33,7 @@ RUN ln -sb /usr/nodejs/bin/node /usr/local/bin/
 RUN ln -sb /usr/nodejs/bin/npm /usr/local/bin/
 
 
-RUN npm install hexo-cli -g 
-
+RUN npm install hexo-cli -g && ln -sb /usr/nodejs/bin/hexo /usr/local/bin/
 # Create hexo base files
 RUN hexo init /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
