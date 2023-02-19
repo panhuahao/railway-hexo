@@ -60,4 +60,4 @@ RUN mv /usr/forhexo-2/nginx-server.conf $NGINX_INCLUED_CONFIG_DIR/default.conf
 #RUN rm -rf /usr/local/bin/*
 # 删除无用软件，记得加 -y
 # 不用再次暴露端口，nginx镜像已经做了
-# 不要重写ENTRYPOINT和CMD！nginx镜像已经写好了！你重写如果和源nginx镜像不一样100%出问题！
+# 不要重写ENTRYPOINT和CMD！nginx镜像已经写好了！你重写如果和源nginx镜像不一样100%出问题
