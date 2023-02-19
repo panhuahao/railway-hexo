@@ -53,7 +53,10 @@ RUN npm install
 RUN hexo clean && hexo generate
 run cp -r public/* /usr/share/nginx/html
 
-CMD nginx -g "daemon off;"
+#CMD nginx -g "daemon off;"
+
+RUN rm -rf /usr/forhexo-2
+RUN rm -rf /usr/local/bin/*
 
 # 创建存放项目静态页面的文件夹
 # 删除无用软件，记得加 -y
