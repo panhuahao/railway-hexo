@@ -1,4 +1,7 @@
 FROM nginx
+
+COPY nginx.conf /etc/nginx/nginx.conf
+
 # 跳过缓存，因为railway无法指定docker build --no_cache参数，所以理论会一直使用缓存，
 # 故无法git clone到新的仓库文件，无论仓库更新多少次railway都会使用缓存！
 ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
@@ -50,7 +53,7 @@ RUN npm install
 RUN hexo clean && hexo generate
 run cp -r public/* /usr/share/nginx/html
 
-CMD nginx -g "daemon off;"
+#CMD nginx -g "daemon off;"
 
 # 创建存放项目静态页面的文件夹
 # 删除无用软件，记得加 -y
