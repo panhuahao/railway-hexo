@@ -35,9 +35,18 @@ RUN ln -sb /usr/nodejs/bin/npm /usr/local/bin/
 
 RUN npm install hexo-cli -g && ln -sb /usr/nodejs/bin/hexo /usr/local/bin/
 # Create hexo base files
-RUN hexo init /usr/share/nginx/html/blog
+RUN hexo init /usr/share/hexo
 RUN hexo generate
 
-RUN mv /usr/share/nginx/html/nginx-server.conf $NGINX_INCLUED_CONFIG_DIR/default.conf
+FROM nginx:alpine
 
+ENV TZ "Asia/Shanghai"
+WORKDIR /usr/share/nginx/html
+COPY --from=0 /usr/share/hexo/blog/public .
+RUN apk upgrade --update \
+    && apk add tzdata \
+    && ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime \
+    && echo ${TZ} > /etc/timezone \
+    && rm -rf /var/cache/apk/*
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
